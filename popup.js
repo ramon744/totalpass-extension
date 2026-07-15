@@ -9,7 +9,10 @@ function setOutput(value) {
 }
 
 function send(type, payload = {}) {
-  return chrome.runtime.sendMessage({ type, ...payload });
+  return chrome.runtime.sendMessage({ type, ...payload }).catch((err) => ({
+    ok: false,
+    error: err?.message || String(err),
+  }));
 }
 
 async function refreshSession() {

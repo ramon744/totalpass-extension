@@ -356,6 +356,17 @@ async function buildSnapshot(options = {}) {
 }
 
 chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
+  let settled = false;
+  const respond = (payload) => {
+    if (settled) return;
+    settled = true;
+    try {
+      sendResponse(payload);
+    } catch {
+      // Popup fechou antes da resposta — ignora.
+    }
+  };
+
   (async () => {
     switch (message?.type) {
       case "GET_SETTINGS": {
@@ -578,9 +589,9 @@ chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
         return { ok: false, error: "Comando desconhecido" };
     }
   })()
-    .then(sendResponse)
+    .then(respond)
     .catch((err) =>
-      sendResponse({
+      respond({
         ok: false,
         error: err instanceof Error ? err.message : String(err),
       })
