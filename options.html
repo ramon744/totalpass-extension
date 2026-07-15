@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TotalPass Bridge — opções</title>
+    <link rel="stylesheet" href="popup.css" />
+    <style>
+      body {
+        width: auto;
+        max-width: 560px;
+        margin: 24px auto;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Opções — TotalPass Bridge</h1>
+      <p class="subtitle">Configura a ponte com o TotalPass Manager</p>
+    </header>
+
+    <section class="card">
+      <h2>URL do Manager</h2>
+      <p class="hint">
+        Local: <code>http://localhost:3000</code> · Produção: URL da Vercel
+      </p>
+      <input id="managerUrl" type="url" placeholder="http://localhost:3000" />
+    </section>
+
+    <section class="card">
+      <h2>Segredo da ponte</h2>
+      <p class="hint">
+        Deve ser igual a <code>TOTALPASS_BRIDGE_SECRET</code> no
+        <code>.env.local</code> / Vercel do Manager. Com o segredo, a extensão
+        sincroniza mesmo sem cookie de login.
+      </p>
+      <input
+        id="bridgeSecret"
+        type="password"
+        placeholder="mesmo valor do servidor"
+        autocomplete="off"
+      />
+    </section>
+
+    <section class="card">
+      <button type="button" id="btnSave" class="primary">Salvar</button>
+      <pre id="output" class="output" style="margin-top: 10px">Pronto.</pre>
+    </section>
+
+    <script src="options.js"></script>
+  </body>
+</html>

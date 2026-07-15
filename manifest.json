@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "TotalPass Bridge",
+  "version": "0.3.0",
+  "description": "Sincroniza beneficiários do HR TotalPass com o TotalPass Manager (sem upload manual).",
+  "permissions": ["storage", "webRequest", "downloads"],
+  "host_permissions": [
+    "https://hr.totalpass.com/*",
+    "https://tp-tmp-storage-prod.s3.amazonaws.com/*",
+    "http://localhost/*",
+    "http://127.0.0.1/*",
+    "https://*.vercel.app/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "TotalPass Bridge"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  }
+}

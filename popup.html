@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TotalPass Bridge</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header>
+      <h1>TotalPass Bridge</h1>
+      <p class="subtitle">Sincroniza HR TotalPass → Manager</p>
+    </header>
+
+    <section class="card">
+      <h2>Sessão TotalPass</h2>
+      <div id="sessionStatus" class="muted">Verificando…</div>
+      <p class="hint">
+        Abra <strong>hr.totalpass.com</strong> logado e navegue em Beneficiários.
+      </p>
+      <button type="button" id="btnRefreshSession">Atualizar sessão</button>
+    </section>
+
+    <section class="card">
+      <h2>Manager</h2>
+      <div id="managerStatus" class="muted">…</div>
+      <button type="button" id="btnOptions">Abrir opções (URL + segredo)</button>
+    </section>
+
+    <section class="card">
+      <h2>Empresa TotalPass</h2>
+      <select id="companySelect" disabled>
+        <option value="">Carregar empresas…</option>
+      </select>
+      <button type="button" id="btnCompanies">Listar empresas</button>
+    </section>
+
+    <section class="card">
+      <h2>Sincronizar</h2>
+      <p class="hint">
+        Exporta CSV na TotalPass e importa automaticamente no Manager — sem upload
+        manual.
+      </p>
+      <button type="button" id="btnSync" class="primary">
+        Sincronizar com o Manager
+      </button>
+    </section>
+
+    <section class="card">
+      <h2>Testes / debug</h2>
+      <div class="actions">
+        <button type="button" id="btnInsights">Insights</button>
+        <button type="button" id="btnHolders">Titulares</button>
+        <button type="button" id="btnDependents">Dependentes</button>
+        <button type="button" id="btnExport">Só exportar CSV (teste)</button>
+        <button type="button" id="btnSnapshot">Salvar snapshot</button>
+        <button type="button" id="btnClear" class="danger">Limpar dados</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Resultado</h2>
+      <pre id="output" class="output">Pronto.</pre>
+    </section>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
